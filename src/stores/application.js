@@ -38,5 +38,12 @@ export const useApplicationStore = defineStore('application', () => {
         return checkJWT(userData.value?.accessToken);
     });
 
-    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated };
+    // Computed property to get the first role
+    const firstRole = computed(() => {
+        return userData.value && userData.value.roles && userData.value.roles.length > 0 
+               ? userData.value.roles[0] 
+               : null;
+    });
+
+    return { userData, setUserData, persistUserData, loadUserData, clearUserData, isAuthenticated, firstRole };
 });

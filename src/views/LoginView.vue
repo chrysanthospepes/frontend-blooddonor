@@ -1,6 +1,4 @@
 <script setup>
-// @EXERCISE: If user is authenticated redirect to the requested URL.
-// @EXERCISE: If user is not authenticated, keep the requested URL and after a successful authentication redirect to the requested resource.
 import { onBeforeMount, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useApplicationStore } from '@/stores/application.js';
@@ -64,21 +62,14 @@ onBeforeMount(() => {
                     <div class="spinner-border" role="status" v-if="loading">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <form v-else>
+                    <form @submit.prevent="onFormSubmit" v-else>
                         <div class="mb-2" v-if="authenticationFailed">
-                            <!--
-              @EXERCISE: Be more specific.
-              E.g., user does not exist, credentials are not valid, etc.
-              Always consider security, i.e., sometimes you may not want to unveil information.
-              -->
                             <div class="alert alert-danger" role="alert">
                                 Authentication failed!
                             </div>
                         </div>
                         <div class="mb-2">
-                            <label for="usernameFormControl" class="form-label mb-1"
-                                >Email address or Username</label
-                            >
+                            <label for="usernameFormControl" class="form-label mb-1">Username</label>
                             <input
                                 v-model="credentials.username"
                                 type="text"
@@ -87,9 +78,7 @@ onBeforeMount(() => {
                             />
                         </div>
                         <div class="mb-2">
-                            <label for="passwordFormControl" class="form-label mb-1"
-                                >Password</label
-                            >
+                            <label for="passwordFormControl" class="form-label mb-1">Password</label>
                             <input
                                 v-model="credentials.password"
                                 type="password"
@@ -97,15 +86,18 @@ onBeforeMount(() => {
                                 id="passwordFormControl"
                             />
                         </div>
-                        <button @click="onFormSubmit" type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary">
                             Login
-                            <span class="fst-italic" v-if="credentials.username"
-                                >as {{ credentials.username }}</span
-                            >
+                            <span class="fst-italic" v-if="credentials.username">as {{ credentials.username }}</span>
                         </button>
+                        <!-- Sign Up Link -->
+                        <div class="mt-3">
+                            <router-link to="/signup">Not a user? Sign Up</router-link>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </template>
+

@@ -1,6 +1,6 @@
 <script setup>
 import { useApplicationStore } from '@/stores/application.js';
-const { userData } = useApplicationStore();
+const { userData, firstRole } = useApplicationStore();
 </script>
 
 <template>
@@ -16,12 +16,13 @@ const { userData } = useApplicationStore();
                             Logged in as: <strong>{{ userData.username }}</strong>
                         </p>
                         <ul>
-                            <li>
-                                <RouterLink :to="{ name: 'students' }">Manage Students</RouterLink>
+                            <li v-if="firstRole==='ROLE_MODERATOR'">
+                                <RouterLink :to="{ name: 'applications' }">Applications</RouterLink>
                             </li>
-                            <li>
-                                <RouterLink :to="{ name: 'courses' }">Manage Courses</RouterLink>
+                            <li v-if="firstRole==='ROLE_USER'">
+                                <RouterLink :to="{ name: 'application-form' }">Application Form</RouterLink>
                             </li>
+                            
                         </ul>
                     </div>
                 </div>

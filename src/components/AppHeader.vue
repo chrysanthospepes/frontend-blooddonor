@@ -14,10 +14,65 @@ const applicationStore = useApplicationStore();
                 >
                     <span class="fs-5 fw-bolder text-white">API Client</span>
                 </a>
-                <ul class="nav nav-pills">
-                    <!-- @EXERCISE: Add different color to active link (improve UX/UX). -->
-                    <!-- @EXERCISE: Add different color to active link with nested routes (improve UX/UX). -->
-                    <!-- @EXERCISE: Hide links that users has no access to. -->
+                <!-- USER -->
+                <ul class="nav nav-pills" v-if="applicationStore.firstRole === 'ROLE_USER'">
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'home' }" class="nav-link text-white"
+                            >Home</router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'profile' }" class="nav-link text-white"
+                            >Profile
+                            <span style="font-size: 10px"
+                                >({{ applicationStore.userData?.username }})</span
+                            ></router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
+                        <router-link :to="{ name: 'login' }" class="nav-link text-white"
+                            >Login</router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'logout' }" class="nav-link text-white"
+                            >Logout</router-link
+                        >
+                    </li>
+                </ul>
+                <!-- MODERATOR/SECRETARY -->
+                <ul class="nav nav-pills" v-else-if="applicationStore.firstRole === 'ROLE_MODERATOR'">
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'home' }" class="nav-link text-white"
+                            >Home</router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'applications' }" class="nav-link text-white"
+                            >Applications</router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'profile' }" class="nav-link text-white"
+                            >Profile
+                            <span style="font-size: 10px"
+                                >({{ applicationStore.userData?.username }})</span
+                            ></router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === false">
+                        <router-link :to="{ name: 'login' }" class="nav-link text-white"
+                            >Login</router-link
+                        >
+                    </li>
+                    <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
+                        <router-link :to="{ name: 'logout' }" class="nav-link text-white"
+                            >Logout</router-link
+                        >
+                    </li>
+                </ul>
+                <!-- ADMIN -->
+                <ul class="nav nav-pills" v-else>
                     <li class="nav-item" v-if="applicationStore.isAuthenticated === true">
                         <router-link :to="{ name: 'home' }" class="nav-link text-white"
                             >Home</router-link

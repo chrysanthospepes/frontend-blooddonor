@@ -59,14 +59,14 @@ const router = createRouter({
                 {
                     path: '',
                     name: 'course-details',
-                    component: () => import("../views/CourseDetailsView.vue"),
-                    meta: { requiresAuth: true },
+                    component: () => import('../views/CourseDetailsView.vue'),
+                    meta: { requiresAuth: true }
                 },
                 {
                     path: 'students',
                     name: 'course-students',
-                    component: () => import("../views/CourseStudentsView.vue"),
-                    meta: { requiresAuth: true },
+                    component: () => import('../views/CourseStudentsView.vue'),
+                    meta: { requiresAuth: true }
                 }
             ]
         },
@@ -75,6 +75,29 @@ const router = createRouter({
             name: 'courses',
             component: () => import('../views/CoursesView.vue'),
             meta: { requiresAuth: true }
+        },
+        {
+            path: '/application-form',
+            name: 'application-form',
+            component: () => import('../views/ApplicationFormView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/applications',
+            name: 'applications',
+            component: () => import('../views/UnreviewedApplicationsView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/application/:id',
+            name: 'application',
+            component: () => import('../views/UnreviewedApplicationView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/signup',
+            name: 'signup',
+            component: () => import('../views/SignupView.vue')
         },
         {
             path: '/login',

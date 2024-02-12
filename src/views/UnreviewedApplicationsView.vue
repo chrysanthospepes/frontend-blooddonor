@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRemoteData } from '@/composables/useRemoteData.js';
 
-const urlRef = ref('http://localhost:9090/student');
+const urlRef = ref('http://localhost:9090/api/donor-application/unreviewed');
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
@@ -17,16 +17,13 @@ onMounted(() => {
             <div class="row py-4 px-3">
                 <div class="col-12">
                     <div class="mb-4">
-                        <h1 class="fs-3">Students</h1>
+                        <h1 class="fs-3">Applications</h1>
                     </div>
                     <div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
+                                    <th>Application ID</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -36,7 +33,20 @@ onMounted(() => {
                                 </tr>
                             </tbody>
                             <tbody v-if="data">
-                                <tr v-for="student in data._embedded.students">
+                                <tr v-for="applicationId in data" :key="applicationId">
+                                    <td>{{ applicationId }}</td>
+                                    <td>
+                                        <RouterLink
+                                            :to="{
+                                                name: 'application',
+                                                params: { id: applicationId }
+                                            }"
+                                            >Review</RouterLink
+                                        >
+                                    </td>
+                                </tr>
+
+                                <!-- <tr v-for="student in data._embedded.students" :key="student">
                                     <td>{{ student.id }}</td>
                                     <td>{{ student.firstName }}</td>
                                     <td>{{ student.lastName }}</td>
@@ -47,10 +57,10 @@ onMounted(() => {
                                                 name: 'student-details',
                                                 params: { id: student.id }
                                             }"
-                                            >Display</RouterLink
+                                            >Review</RouterLink
                                         >
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
