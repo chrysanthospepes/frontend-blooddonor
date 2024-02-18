@@ -6,7 +6,7 @@ const router = useRouter();
 const store = useApplicationStore();
 
 const sendNotification = () => {
-    const url = `http://localhost:9090/api/notification`;
+    const url = `http://localhost:9090/api/notification/send-notification`;
     fetch(url, {
         method: 'POST',
         headers: {

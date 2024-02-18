@@ -7,7 +7,7 @@ const { userData } = useApplicationStore();
 const userIdRef = ref(null);
 
 const urlRef = computed(() => {
-    return `http://localhost:9090/api/notification/${userIdRef.value}`;
+    return `http://localhost:9090/api/notification/get/${userIdRef.value}`;
 });
 
 const authRef = ref(true);

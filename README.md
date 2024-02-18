@@ -1,7 +1,7 @@
 # Front end for ds assignment
 
-## Group #1
-Chrysanthos Pepes, 219876\
+## Group #51
+Chrysanthos Pepes, 21976\
 Konstantinos Gerokostas, 219137
 
 ### Compile and Hot-Reload for Development

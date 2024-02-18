@@ -45,22 +45,6 @@ onMounted(() => {
                                         >
                                     </td>
                                 </tr>
-
-                                <!-- <tr v-for="student in data._embedded.students" :key="student">
-                                    <td>{{ student.id }}</td>
-                                    <td>{{ student.firstName }}</td>
-                                    <td>{{ student.lastName }}</td>
-                                    <td>{{ student.email }}</td>
-                                    <td>
-                                        <RouterLink
-                                            :to="{
-                                                name: 'student-details',
-                                                params: { id: student.id }
-                                            }"
-                                            >Review</RouterLink
-                                        >
-                                    </td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>
