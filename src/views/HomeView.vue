@@ -15,14 +15,27 @@ const { userData, firstRole } = useApplicationStore();
                         <p>
                             Logged in as: <strong>{{ userData.username }}</strong>
                         </p>
-                        <ul>
-                            <li v-if="firstRole==='ROLE_MODERATOR'">
-                                <RouterLink :to="{ name: 'applications' }">Applications</RouterLink>
-                            </li>
-                            <li v-if="firstRole==='ROLE_USER'">
+                        <!-- User Home Page -->
+                        <ul v-if="firstRole==='ROLE_USER'">
+                            <li>
                                 <RouterLink :to="{ name: 'application-form' }">Application Form</RouterLink>
                             </li>
-                            
+                            <li>
+                                <RouterLink :to="{ name: 'change-email' }">Change Email</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink :to="{ name: 'view-notification' }">Notifications</RouterLink>
+                            </li>
+                        </ul>
+
+                        <!-- Secretary Home Page -->
+                        <ul v-if="firstRole==='ROLE_MODERATOR'">
+                            <li>
+                                <RouterLink :to="{ name: 'applications' }">Applications</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink :to="{ name: 'send-notification' }">Send Notification</RouterLink>
+                            </li>
                         </ul>
                     </div>
                 </div>

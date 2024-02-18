@@ -29,7 +29,7 @@ const onAcceptApplication = () => {
 
 const onRejectApplication = () => {
     console.log("Reject button clicked");
-    reviewApplication(true);
+    reviewApplication(false);
 };
 
 const reviewApplication = (isAccepted) => {

@@ -12,7 +12,7 @@ const applicationStore = useApplicationStore();
                     href="/"
                     class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
                 >
-                    <span class="fs-5 fw-bolder text-white">API Client</span>
+                    <span class="fs-5 fw-bolder text-white">Blood Donor Registry</span>
                 </a>
                 <!-- USER -->
                 <ul class="nav nav-pills" v-if="applicationStore.firstRole === 'ROLE_USER'">

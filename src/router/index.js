@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import HomeView from '../views/HomeView.vue';
 import { useApplicationStore } from '@/stores/application.js';
 
 const router = createRouter({
@@ -8,7 +7,6 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            // component: HomeView,
             component: () => import('../views/HomeView.vue'),
             meta: { requiresAuth: true }
         },
@@ -16,64 +14,6 @@ const router = createRouter({
             path: '/profile',
             name: 'profile',
             component: () => import('../views/ProfileView.vue'),
-            meta: { requiresAuth: true }
-        },
-        {
-            path: '/students',
-            name: 'students',
-            component: () => import('../views/StudentsView.vue'),
-            meta: { requiresAuth: true }
-        },
-        {
-            path: '/students/new',
-            name: 'student-new',
-            component: () => import('../views/CreateStudentView.vue'),
-            meta: { requiresAuth: true }
-        },
-        {
-            path: '/students/:id',
-            name: 'student',
-            component: () => import('../views/StudentView.vue'),
-            meta: { requiresAuth: true },
-            children: [
-                {
-                    path: '',
-                    name: 'student-details',
-                    component: () => import('../views/StudentDetailsView.vue'),
-                    meta: { requiresAuth: true }
-                },
-                {
-                    path: 'courses',
-                    name: 'student-courses',
-                    component: () => import('../views/StudentCoursesView.vue'),
-                    meta: { requiresAuth: true }
-                }
-            ]
-        },
-        {
-            path: '/course/:id',
-            name: 'course',
-            component: () => import('../views/CourseView.vue'),
-            meta: { requiresAuth: true },
-            children: [
-                {
-                    path: '',
-                    name: 'course-details',
-                    component: () => import('../views/CourseDetailsView.vue'),
-                    meta: { requiresAuth: true }
-                },
-                {
-                    path: 'students',
-                    name: 'course-students',
-                    component: () => import('../views/CourseStudentsView.vue'),
-                    meta: { requiresAuth: true }
-                }
-            ]
-        },
-        {
-            path: '/courses',
-            name: 'courses',
-            component: () => import('../views/CoursesView.vue'),
             meta: { requiresAuth: true }
         },
         {
@@ -92,6 +32,24 @@ const router = createRouter({
             path: '/application/:id',
             name: 'application',
             component: () => import('../views/UnreviewedApplicationView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/change-email',
+            name: 'change-email',
+            component: () => import('../views/ChangeEmailView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/send-notification',
+            name: 'send-notification',
+            component: () => import('../views/SendNotificationView.vue'),
+            meta: { requiresAuth: true }
+        },
+        {
+            path: '/view-notification',
+            name: 'view-notification',
+            component: () => import('../views/ViewNotificationView.vue'),
             meta: { requiresAuth: true }
         },
         {
