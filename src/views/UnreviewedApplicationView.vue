@@ -12,13 +12,16 @@ const applicationIdRef = ref(null);
 
 
 const urlRef = computed(() => {
-    return 'http://localhost:9090/api/donor-application/view/' + applicationIdRef.value;
+    return `http://localhost:9090/api/donor-application/view/${applicationIdRef.value}`;
 });
+
 const authRef = ref(true);
 const { data, loading, performRequest } = useRemoteData(urlRef, authRef);
 
 onMounted(() => {
+    console.log('Route Params:', route.params);
     applicationIdRef.value = route.params.id;
+    console.log('Application ID:', applicationIdRef.value);
     performRequest();
 });
 
@@ -108,12 +111,15 @@ const reviewApplication = (isAccepted) => {
 
                             </tbody>
                         </table>
+                        
                     </div>
                     <div class="mt-3">
                         <button class="btn btn-success" @click="onAcceptApplication">Accept</button>
                         <button class="btn btn-danger" @click="onRejectApplication">Reject</button>
                     </div>
+                    
                 </div>
+                
             </div>
         </div>
     </div>

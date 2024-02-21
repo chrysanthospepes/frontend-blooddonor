@@ -98,7 +98,7 @@ onMounted(() => {
                                 </tr>
                                 <tr>
                                     <th>Blood donor</th>
-                                    <td>{{ data.isDonor ? 'Yes' : 'No' }}</td>
+                                    <td>{{ data.donor ? 'Yes' : 'No' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Blood Type</th>
